@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+	<head><meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>特效网站冯静雯181013037</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="fonts/iconfont.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/player.css" />
+    
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="description" value="A carousel configurated and styled in such manner that is simulates an accordion like effect. Click on one of the truncated images to slide it in focus, making it fully visible." />
+		<meta name="keywords" value="carousel, example, accordion, circular" />
+		<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+		<script src="js/jquery.carouFredSel-6.0.4-packed.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('#carousel').carouFredSel({
+					width: 900,
+					height: 525,
+					align: false,
+					padding: [0, 650, 0, 0],
+					items: {
+						width: 50,
+						height: 525,
+						visible: 5,
+						minimum: 1
+					},
+					scroll: {
+						items: 1,
+						duration: 750,
+						onBefore: function( data ) {
+							data.items.old.add( data.items.visible ).find( 'span' ).stop().slideUp();
+						},
+						onAfter: function( data ) {
+							data.items.visible.last().find( 'span' ).stop().slideDown();
+						}
+					},
+					auto: false,
+					onCreate: function() {
+						$(this).children().each(function() {
+							$(this).append( '<span>' + $('img', this).attr( 'alt' ) + '</span>' );
+							$(this).find( 'span' ).hide();
+						});
+					}
+				});
+				$('#carousel').children().click(function() {
+					$('#carousel').trigger( 'slideTo', [this, -4, 'prev'] );
+				});
+			});
+		</script>
+		<style type="text/css">
+			html, body {
+				height: 100%;
+				padding: 0;
+				margin: 0;
+			}
+			body { min-height: 600px; background-color: hsla(0,0%,16%,1.00); 			}
+			body * {
+				font-family: Arial, Geneva, SunSans-Regular, sans-serif;
+				font-size: 14px;
+				color: #333;
+				line-height: 22px;
+			}
+			#wrapper {
+				width: 900px;
+				height: 525px;
+				margin: -262px 0 0 -450px;
+				overflow: hidden;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+			}
+			#carousel div {
+				cursor: pointer;
+				margin-right: -650px;
+				float: left;
+				position: relative;
+				box-shadow: 0 0 10px #000;
+			}
+			#carousel div:last-child {
+				cursor: default;
+			}
+			#carousel div span {
+				background-color: #222;
+				background-color: rgba(0,0,0, 0.8);
+				color: #fff;
+				font-size: 25px;
+				text-align: center;
+				display: inline-block;
+				width: 700px;
+				height: 25px;
+				padding: 20px 0;
+				overflow: hidden;
+				position: absolute;
+				left: 0;
+				bottom: 0;
+			}
+			
+			#donate-spacer {
+				height: 100%;
+			}
+			#donate {
+				border-top: 1px solid #999;
+				width: 750px;
+				padding: 50px 75px;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			#donate p, #donate form {
+				margin: 0;
+				float: left;
+			}
+			#donate p {
+				width: 650px;
+			}
+			#donate form {
+				width: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="carousel">
+				<div><img src="img/sp-colorado-is-not-enough.jpg" alt="Colorado Is Not Enough" width="700" height="525" /></div>
+				<div><img src="img/sp-die-hard.jpg" alt="Die Hard" width="700" height="525" /></div>
+				<div><img src="img/sp-fat-red-line.jpg" alt="Fat Red Line" width="700" height="525" /></div>
+				<div><img src="img/sp-resevoir-dogs.jpg" alt="Resevoir Dogs" width="700" height="525" /></div>
+				<div><img src="img/sp-fatrix.jpg" alt="The Fatrix" width="700" height="525" /></div>
+			</div>
+		</div>
+		<div id="donate-spacer"></div>
+
+
+ <!-- 播放器 -->
+    <div class="music-player">
+        <!-- audio标签 -->
+        <audio class="music-player__audio" ></audio>
+        <!-- 播放器主体 -->
+        <div class="music-player__main">
+            <!-- 模糊背景 -->
+            <div class="music-player__blur"></div>
+            <!-- 唱片 -->
+            <div class="music-player__disc">
+                <!-- 唱片图片 -->
+                <div class="music-player__image">
+                    <img width="100%" src="" alt="">
+                </div>
+                <!-- 指针 -->
+                <div class="music-player__pointer"><img width="100%" src="img/cd_tou.png" alt=""></div>
+            </div>
+            <!-- 控件主体 -->
+            <div class="music-player__controls">
+                <!-- 歌曲信息 -->
+                <div class="music__info">
+                    <h3 class="music__info--title">...</h3>
+                    <p class="music__info--singer">...</p>
+                </div>
+                <!-- 控件... -->
+                <div class="player-control">
+                    <div class="player-control__content">
+                        <div class="player-control__btns">
+                            <div class="player-control__btn player-control__btn--prev"><i class="iconfont icon-prev"></i></div>
+                            <div class="player-control__btn player-control__btn--play"><i class="iconfont icon-play"></i></div>
+                            <div class="player-control__btn player-control__btn--next"><i class="iconfont icon-next"></i></div>
+                            <div class="player-control__btn player-control__btn--mode"><i class="iconfont icon-loop"></i></div>
+                        </div>
+                        <div class="player-control__volume">
+                            <div class="control__volume--icon player-control__btn"><i class="iconfont icon-volume"></i></div>
+                            <div class="control__volume--progress progress"></div>
+                        </div>
+                    </div>
+
+                    <!-- 歌曲播放进度 -->
+                    <div class="player-control__content">
+                        <div class="player__song--progress progress"></div>
+                        <div class="player__song--timeProgess nowTime">00:00</div>
+                        <div class="player__song--timeProgess totalTime">00:00</div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <!-- 歌曲列表 -->
+        <div class="music-player__list">
+            <ul class="music__list_content">
+                <!-- <li class="music__list__item play">123</li>
+                <li class="music__list__item">123</li>
+                <li class="music__list__item">123</li> -->
+            </ul>
+        </div>
+    </div>
+
+    <script src="js/utill.js"></script>
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="js/player.js"></script>
+	<script src="js/jquery.min.js"></script>
+	</body>
+</html>

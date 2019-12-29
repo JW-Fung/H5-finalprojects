@@ -1,0 +1,16 @@
+{
+  "id": "1588587",
+  "name": "appassignment",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "12582673",
+      "name": "logo",
+      "font_class": "logo",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    }
+  ]
+}
